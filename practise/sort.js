@@ -56,10 +56,40 @@ class JsSort{
         console.log(JSON.stringify(list));
         return list;
     }
+
+    insertSort(list){
+        let swapCount = 0;
+        let compareCount = 0;
+        if(Array.isArray(list) && list.length>1){
+            for(let i=1,len=list.length;i<len;i++){
+                for(let j=i;j>0;j--){
+                    compareCount++;
+                    if(list[j]<list[j-1]){
+                        console.log(`list[j] = ${list[j]}----list[j-1] = ${list[j-1]}`);
+                        this.swap(list,j,j-1);
+                        console.log(JSON.stringify(list));
+                        swapCount ++;
+                        break;
+                    }
+                }
+            }
+        }
+
+        console.log(`swapCount = ${swapCount}`);
+        console.log(`compareCount = ${compareCount}`);
+        let n = list.length;
+        //console.log(`n = ${n}---1/2(n^2-n) = ${(n*n-n)/2}`);
+        console.log(JSON.stringify(list));
+        return list;
+    }
+
+
+
+
 }
 
 
 //test
 let mySort = new JsSort();
 
-mySort.selectionSort([2,3,5,6,89,1,2,3,4,5,6,7,1,23,4,5,6,78,9,12,34,5,2,4,576,8,982,23,23,34]);
+mySort.insertSort([2,3,52,4,576,8,982,23,23,34]);
