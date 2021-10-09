@@ -1,0 +1,22 @@
+{
+  "name": "practise-algorithm",
+  "version": "1.0.0",
+  "description": "my-practise-algorithm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wuguang/practise-algorithm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wuguang/practise-algorithm/issues"
+  },
+  "homepage": "https://github.com/wuguang/practise-algorithm#readme",
+  "dependencies": {
+    "data-struct-js": "0.0.15"
+  }
+}

@@ -129,7 +129,6 @@ class JsSort{
     quickSort(list){
         let swapCount = 0;
         let compareCount = 0;
-
         let doQucik = list=>{
             list = this.initArrForQuickSort(list);
             let len = list.length;
