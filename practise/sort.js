@@ -1,20 +1,20 @@
-class JsSort{
-    swap(list,i,j){
-        let temp = list[i];
-        list[i] = list[j];
-        list[j] = temp;
-    }
-    //冒泡排序
-    bubble(list){
+class JsSort {
+    swap(list, i, j) {
+            let temp = list[i];
+            list[i] = list[j];
+            list[j] = temp;
+        }
+        //冒泡排序
+    bubble(list) {
         let swapCount = 0;
         let compareCount = 0;
-        if(Array.isArray(list) && list.length>1){
+        if (Array.isArray(list) && list.length > 1) {
             let len = list.length;
-            for(let startIndex=0;startIndex<len-1;startIndex++){
-                for(let i= 1,len=list.length-startIndex;i<len;i++){
-                    compareCount ++;
-                    if(list[i-1]>list[i]){
-                        this.swap(list,i-1,i);
+            for (let startIndex = 0; startIndex < len - 1; startIndex++) {
+                for (let i = 1, len = list.length - startIndex; i < len; i++) {
+                    compareCount++;
+                    if (list[i - 1] > list[i]) {
+                        this.swap(list, i - 1, i);
                         swapCount++;
                     }
                 }
@@ -33,19 +33,19 @@ class JsSort{
         return list;
     }
 
-    selectionSort(list){
+    selectionSort(list) {
         let swapCount = 0;
         let compareCount = 0;
-        if(Array.isArray(list) && list.length>1){
-            for(let i=0,len=list.length;i<len;i++){
+        if (Array.isArray(list) && list.length > 1) {
+            for (let i = 0, len = list.length; i < len; i++) {
                 let selected = i;
-                for(let j=selected+1;j<len;j++){
+                for (let j = selected + 1; j < len; j++) {
                     compareCount++;
-                    if(list[j]<list[selected]){
+                    if (list[j] < list[selected]) {
                         selected = j;
                     }
                 }
-                this.swap(list,i,selected);
+                this.swap(list, i, selected);
                 swapCount++;
             }
         }
@@ -57,18 +57,18 @@ class JsSort{
         return list;
     }
 
-    insertSort(list){
+    insertSort(list) {
         let swapCount = 0;
         let compareCount = 0;
-        if(Array.isArray(list) && list.length>1){
-            for(let i=1,len=list.length;i<len;i++){
-                for(let j=i;j>0;j--){
+        if (Array.isArray(list) && list.length > 1) {
+            for (let i = 1, len = list.length; i < len; i++) {
+                for (let j = i; j > 0; j--) {
                     compareCount++;
-                    if(list[j]<list[j-1]){
+                    if (list[j] < list[j - 1]) {
                         console.log(`list[j] = ${list[j]}----list[j-1] = ${list[j-1]}`);
-                        this.swap(list,j,j-1);
-                        
-                        swapCount ++;
+                        this.swap(list, j, j - 1);
+
+                        swapCount++;
                         //break;
                     }
                 }
@@ -83,7 +83,7 @@ class JsSort{
         return list;
     }
 
-    shellSort(list){
+    shellSort(list) {
         let swapCount = 0;
         let compareCount = 0;
         /*
@@ -111,71 +111,93 @@ class JsSort{
         return list;
     }
 
-    initArrForQuickSort(arr){
-        let len = arr.length;
-        if(len>2){
-            let middle = Math.floor(len/2);
-            if(arr[0]>arr[middle]){
-                this.swap(arr,0,middle);
-            }
-            if(arr[middle]>arr[len-1]){
-                this.swap(arr,middle,len-1);
-            }
-            this.swap(arr,middle,len-1);
+    initArrForQuickSort(arr, left, right) { 
+        //right-left
+        let middle = Math.floor((right - left) / 2);
+        //对三个数排序
+        if (arr[left] > arr[middle]) {
+            this.swap(arr, left, middle);
         }
+        //console.log(`111111-initArrForQuickSort = arr = ${JSON.stringify(arr)}`);
+        if (arr[middle] > arr[right]) {
+            this.swap(arr, middle, right);
+        }
+        //console.log(`22222222--initArrForQuickSort = arr = ${JSON.stringify(arr)}`);
+        if (arr[left] > arr[middle]) {
+            this.swap(arr, left, middle);
+        }
+        //console.log(`333333-initArrForQuickSort = arr = ${JSON.stringify(arr)}`);
+        //最后一步将 目标值放在合理的位置上
+        this.swap(arr, middle, right - 1);
+        //console.log(`initArrForQuickSort = arr = ${JSON.stringify(arr)}`);
+       
         return arr;
     }
 
-    quickSort(list){
+    quickSort(list) {
         let swapCount = 0;
         let compareCount = 0;
-        let doQucik = list=>{
-            list = this.initArrForQuickSort(list);
+        let exeTimes = 0;
+        let doQucik = (list, left, right) => {
+            console.log(`left = ${left}-----------right = ${right}`);
+            list = this.initArrForQuickSort(list, left, right);
             let len = list.length;
-            let left = 1;
-            let right = len-3;
-            let target = list[len-2];
-            while(left !==right){
-                while(list[left]<=target){
+            let privot = list[right - 1];
+
+            console.log(`init----initArrForQuickSort = list = ${JSON.stringify(list)}`);
+            while (left <= right) {
+                while (list[left] <= privot) {
                     left++;
                 }
-                while(list[right]>=target){
-                    right++;
-                    //console.log(`right = ${right}`);
+                while (list[right] >= privot) {
+                    right--;
                 }
-                if(left !== right){
-
-                    console.log(` this.swap----left = ${left}---right = ${right}`);
-                    console.log(`before list[left] = ${list[left]}-----list[right] = ${list[right]}`);
-                    this.swap(list,left,right);
-                    console.log(`after list[left] = ${list[left]}-----list[right] = ${list[right]}`);
+                console.log(`left = ${left}----right = ${right}`);
+                //left 走到更大的位置了
+                if(left>right){
+                    //得到正确的位置完毕
+                    this.swap(list, left, len - 2);
+                    break;
+                }else{
+                    console.log(`left = {}`);
+                    this.swap(list, left, right);
+                    //交换之后又可以比较了
                 }
-                break;
-
+                
             }
 
-            if(list[left]>=target){
-                this.swap(list,left,len-2);
-                list = [...doQucik(list.slice(0,left)),target,...doQucik(list.slice(left+1,len))];
+            console.log(`privot = ${privot}---list = ${JSON.stringify(list)}`);
+            
+            //完成，执行新的二分排序，求新的left，及right
+            let left_new_left = 0;
+            let left_new_right = left - 1;
 
-            }else{
-                this.swap(list,left+1,len-2);
-                list = [...doQucik(list.slice(0,left+1)),target,...doQucik(list.slice(left+2,len))];
-            }
+            //左边排序递归排序
+            if (left_new_right - left_new_left > 2) {
+                doQucik(list, left_new_left, left_new_right);
+            } 
+            //右边递归排序
+            let right_new_left = left + 1;
+            let right_new_right = len - 1;
+            if (right_new_right - right_new_left > 2) {
+                doQucik(list, right_new_left, right_new_right);
+            } 
             //一轮排序完成
             return list;
         }
 
-        if(Array.isArray(list) && list.length>1){
-            list = doQucik(list);
+        if (Array.isArray(list) && list.length > 1) {
+            let len = list.length;
+            list = doQucik(list, 0, len - 1);
         }
         console.log(JSON.stringify(list));
         return list;
     }
+
 }
 
 
 //test
 let mySort = new JsSort();
 
-mySort.quickSort([2,12,2,3,12,2,4,12,14,16,17,3,52,4,576,8,982,28,23,34]);
+mySort.quickSort([34,12,3,16,2,5,18,10]);
