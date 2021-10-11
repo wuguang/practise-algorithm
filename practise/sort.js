@@ -142,14 +142,14 @@ class JsSort {
             console.log(`left = ${left}-----------right = ${right}`);
             list = this.initArrForQuickSort(list, left, right);
             let len = list.length;
-            let privot = list[right - 1];
+            let pivot = list[right - 1];
 
             console.log(`init----initArrForQuickSort = list = ${JSON.stringify(list)}`);
             while (left <= right) {
-                while (list[left] <= privot) {
+                while (list[left] <= pivot) {
                     left++;
                 }
-                while (list[right] >= privot) {
+                while (list[right] >= pivot) {
                     right--;
                 }
                 console.log(`left = ${left}----right = ${right}`);
@@ -166,7 +166,7 @@ class JsSort {
                 
             }
 
-            console.log(`privot = ${privot}---list = ${JSON.stringify(list)}`);
+            console.log(`pivot = ${pivot}---list = ${JSON.stringify(list)}`);
             
             //完成，执行新的二分排序，求新的left，及right
             let left_new_left = 0;
@@ -201,3 +201,4 @@ class JsSort {
 let mySort = new JsSort();
 
 mySort.quickSort([34,12,3,16,2,5,18,10]);
+

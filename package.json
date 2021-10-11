@@ -4,7 +4,8 @@
   "description": "my-practise-algorithm",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "debug": "node  server/index.js",
+    "sort":"node  practise/sort.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/wuguang/practise-algorithm#readme",
   "dependencies": {
-    "data-struct-js": "0.0.15"
+    "data-struct-js": "0.0.15",
+    "express": "^4.17.1"
   }
 }

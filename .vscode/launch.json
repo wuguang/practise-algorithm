@@ -1,24 +1,14 @@
 {
     "configurations": [
         {
-            "name": "Attach",
-            "port": 9229,
-            "request": "attach",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "type": "pwa-node"
-        },
-        {
-            "type": "node",
+            "name": "express-app",
             "request": "launch",
-            "name": "nodemon",
-            "runtimeExecutable": "nodemon",
+            "type": "node",
             "program": "${workspaceFolder}/practise/sort.js",
-            "restart": true,
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "sourceMaps":true
+            "runtimeExecutable": "npm",
+            "runtimeArgs":["run-script","sort"],
+            "port":6666,
+            "stopOnEntry":true
         }
     ]
 }
