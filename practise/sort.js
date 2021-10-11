@@ -143,12 +143,24 @@ class JsSort {
             list = this.initArrForQuickSort(list, left, right);
             let len = list.length;
             let pivot = list[right - 1];
+            right = right - 2;
+            
+            
+            if(list.length<3){
+                return list;
+            }
 
             console.log(`init----initArrForQuickSort = list = ${JSON.stringify(list)}`);
             while (left <= right) {
                 while (list[left] <= pivot) {
                     left++;
                 }
+                if(left>=right){
+                    //得到正确的位置完毕
+                    this.swap(list, left, len - 2);
+                    break;
+                }
+                
                 while (list[right] >= pivot) {
                     right--;
                 }
@@ -174,13 +186,13 @@ class JsSort {
 
             //左边排序递归排序
             if (left_new_right - left_new_left > 2) {
-                doQucik(list, left_new_left, left_new_right);
+                doQucik(list, left_new_left, left_new_right-1);
             } 
             //右边递归排序
             let right_new_left = left + 1;
             let right_new_right = len - 1;
             if (right_new_right - right_new_left > 2) {
-                doQucik(list, right_new_left, right_new_right);
+                doQucik(list, right_new_left, right_new_right-1);
             } 
             //一轮排序完成
             return list;
