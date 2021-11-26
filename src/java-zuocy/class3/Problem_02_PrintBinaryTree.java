@@ -68,7 +68,5 @@ public class Problem_02_PrintBinaryTree {
 		head.right.right = new Node(1);
 		head.left.left.right = new Node(1);
 		printTree(head);
-
 	}
-
 }

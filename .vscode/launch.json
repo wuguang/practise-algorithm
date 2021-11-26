@@ -1,14 +1,24 @@
 {
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch Problem_02_PrintBinaryTree",
+            "request": "launch",
+            "mainClass": "class3.Problem_02_PrintBinaryTree",
+            "projectName": "practise-algorithm_88c91566"
+        },
+        {
             "name": "express-app",
             "request": "launch",
             "type": "node",
             "program": "${workspaceFolder}/practise/sort.js",
             "runtimeExecutable": "npm",
-            "runtimeArgs":["run-script","sort"],
-            "port":6666,
-            "stopOnEntry":true
+            "runtimeArgs": [
+                "run-script",
+                "sort"
+            ],
+            "port": 6666,
+            "stopOnEntry": true
         }
     ]
 }
