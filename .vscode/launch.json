@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Problem_12_LowestCommonAncestor",
+            "request": "launch",
+            "mainClass": "class3.Problem_12_LowestCommonAncestor",
+            "projectName": "practise-algorithm_e945ba3a"
+        },
+        {
+            "type": "java",
             "name": "Launch Problem_02_PrintBinaryTree",
             "request": "launch",
             "mainClass": "class3.Problem_02_PrintBinaryTree",

@@ -189,6 +189,8 @@ public class Problem_12_LowestCommonAncestor {
 		head.right.right = new Node(7);
 		head.right.right.left = new Node(8);
 		printTree(head);
+
+	
 		System.out.println("===============");
 
 		Node o1 = head.left.right;
@@ -199,6 +201,8 @@ public class Problem_12_LowestCommonAncestor {
 		System.out.println("o2 : " + o2.value);
 		System.out.println("ancestor : " + lowestAncestor(head, o1, o2).value);
 		System.out.println("===============");
+
+		/*
 
 		// ����map�󷽱��β�ѯ--��������
 		Record1 record1 = new Record1(head);
@@ -218,10 +222,13 @@ public class Problem_12_LowestCommonAncestor {
 
 		o1 = head.right.left;
 		o2 = head.right.right.left;
+
 		System.out.println("o1 : " + o1.value);
 		System.out.println("o2 : " + o2.value);
 		System.out.println("ancestor : " + record1.query(o1, o2).value);
 		System.out.println("ancestor : " + record2.query(o1, o2).value);
+
+		*/
 
 	}
 
