@@ -49,6 +49,8 @@ function getNextNodeForMiddleOrder(node){
             }
             node = node.parent;
         }
+
+        
         return node.parent;
     }
 }
