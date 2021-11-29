@@ -7,6 +7,8 @@ function Node(value){
     }
 }
 
+
+//判断 2个的公共 祖先节点是谁
 function lowestAncestor(node,t1,t2){
     if(node === null || node ===t1 ||node===t2){
         return node;
@@ -27,32 +29,66 @@ function lowestAncestor(node,t1,t2){
     //return left!==null?left:right;
 }
 
-//
-function getNextNodeForMiddleOrder(node){
-    /*
-    node.left;
-    node.right;
-    node.parent;
-    */
-    if(node === node.parent.left){
-        return node.parent;
-    }else if(node.right){
-        //寻找有节点最左侧
-        node = node.right;
-        while(node.left){
-            node = node.left;
-        }
+
+/*
+求一个节点先序遍历的下一个节点是谁？ 
+节省遍历的方法
+*/
+function getNextNodeForPreOrder(node){
+    if(node.left !==null){
+        return node.left;
+    }else if(node.right !== null){
+        return node.right;
     }else{
-        node = node.parent;
-        while(node !== node.parent.left){
-            if(node.parent === null){
-                return null;
-            }
-            node = node.parent;
+        let nParent = node.parent;
+        if(nParent!==null && nParent.parent&& nParent.parent.right){
+            return nParent.parent.right
         }
-        return node.parent;
     }
 }
+
+/*
+求一个节点中序遍历的下一个节点是谁？ 
+节省遍历的方法
+*/
+function getNextNodeForMiddleOrder(node){
+    let pNode = node.parent;
+    //或最左侧节点
+    let getLeftestNode = (node)=>{
+        while(node.left!==null){
+            node = node.left;
+        }
+        return node;
+    }
+
+    if(node.right!==null){
+        return getLeftestNode(rightNode);
+    }else if(node === pNode.left){
+        return pNode;
+    }else{
+        if(pNode){
+            let ppNode = pNode.parent;
+            return getNextNodeForMiddleOrder(ppNode);
+        }
+        
+        
+        /*
+        if(pNode && pNode.parent){
+            let rightNode = pNode.parent.right;
+            let getLeftestNode = (node)=>{
+                while(node.left!==null){
+                    node = node.left;
+                }
+                return node;
+            }
+            return getLeftestNode(rightNode);
+            //return getNextNodeForMiddleOrder(ppNode);
+        }
+        */
+    }
+
+}
+
 
 
 testgetNextNodeForMiddleOrder();
@@ -78,9 +114,8 @@ function testgetNextNodeForMiddleOrder(){
 		head.right.left.left.parent = head.right.left;
 		head.right.right = new Node(10);
 		head.right.right.parent = head.right;
-
-
         let test = head.left.left;
+
 		console.log(test.value + " next: " + getNextNodeForMiddleOrder(test).value);
 		test = head.left.left.right;
 		console.log(test.value + " next: " + getNextNodeForMiddleOrder(test).value);
