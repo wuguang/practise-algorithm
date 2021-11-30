@@ -4,8 +4,8 @@
   "description": "my-practise-algorithm",
   "main": "index.js",
   "scripts": {
-    "debug": "node  server/index.js",
-    "sort":"node  practise/sort.js"
+    "sort":"node ./practise/sort.js",
+    "zuo":"node ./src/js-zuocy/class5/isBst.js"
   },
   "repository": {
     "type": "git",

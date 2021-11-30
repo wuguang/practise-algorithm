@@ -72,19 +72,6 @@ function getNextNodeForMiddleOrder(node){
         }
         
         
-        /*
-        if(pNode && pNode.parent){
-            let rightNode = pNode.parent.right;
-            let getLeftestNode = (node)=>{
-                while(node.left!==null){
-                    node = node.left;
-                }
-                return node;
-            }
-            return getLeftestNode(rightNode);
-            //return getNextNodeForMiddleOrder(ppNode);
-        }
-        */
     }
 
 }
