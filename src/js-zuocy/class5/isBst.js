@@ -15,12 +15,12 @@ function isBst(node){
     }
     let {left,right} = node;
     if(left!==null){
-        if(left>node){
+        if(left.value>node.value){
             return false;
         }
     }
     if(right!==null){
-        if(node>right){
+        if(node.value>right.value){
             return false;
         }
     }
@@ -36,8 +36,10 @@ function isBst(node){
     return true;
 }
 
+
+
 function test(){
-    let head = new Node(10);
+    let head = new Node(17);
     head.left = new Node(15);
     head.right = new Node(28);
     head.left.left = new Node(14);
@@ -45,9 +47,7 @@ function test(){
     head.right.left = new Node(25);
     head.right.right = new Node(31);
     head.right.right.left = new Node(30);
-
     let result = isBst(head);
-
     console.log(result);
 }
 

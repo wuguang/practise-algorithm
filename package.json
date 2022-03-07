@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "sort":"node ./practise/sort.js",
-    "zuo":"node ./src/js-zuocy/class5/isBst.js"
+    "zuo":"node ./src/js-zuocy/class5/traversalBinaryTree.js"
   },
   "repository": {
     "type": "git",

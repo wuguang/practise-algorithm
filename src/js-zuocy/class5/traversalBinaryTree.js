@@ -18,15 +18,55 @@ function preOrderTraversal(node,result=[]){
 }
 
 
+function previousNotRecursion(node){
+    let newStack = [];
+    newStack.push(node);
+    while(newStack.length>0){
+        let pNode = newStack.pop();
+        console.log(`${pNode.value}`);
+        let {left,right} = pNode;
+        right && newStack.push(right);
+        left && newStack.push(left);
+    }
+}
+
+
+function middleNotRecursion(node){
+    let newStack = [];
+    let curNode = node;
+    newStack.push(curNode);
+
+    while(curNode){
+        newStack.push(curNode.left);
+        curNode = curNode.left;
+        if(curNode === null){
+            let node = newStack.pop();
+            console.log(`${node.value}`);
+            curNode = node.right;
+            //newStack.push(curNode.left);
+        }
+        
+        /* 
+        while(curNode === null){
+            curNode = newStack.pop();
+            console.log(`${node.value}`);
+            curNode = curNode.right;
+        }
+        */
+    }
+   
+}
+
 function middleOrderTraversal(node,result=[]){
     //
     if(node!==null){
-        preOrderTraversal(node.left,result);
+        middleOrderTraversal(node.left,result);
         result.push(node.value);
-        preOrderTraversal(node.right,result);
-        console.log(JSON.stringify(result));
+        console.log(`${node.value}`);
+        middleOrderTraversal(node.right,result);
     }
 }
+
 
 
 function postTraversal(node,result=[]){
@@ -49,9 +89,10 @@ function test(){
     head.right.right = new Node(7);
     head.right.right.left = new Node(8);
 
-    preOrderTraversal(head);
-    middleOrderTraversal(head);
-    postTraversal(head);
+    //preOrderTraversal(head);
+    //middleOrderTraversal(head);
+    middleNotRecursion(head);
+    //postTraversal(head);
 }
 
 test();

@@ -41,7 +41,7 @@
             "name": "zuo-js",
             "request": "launch",
             "type": "node",
-            "program": "${workspaceFolder}/src/js-zuocy/class5/isBst.js",
+            "program": "${workspaceFolder}/src/js-zuocy/class5/traversalBinaryTree.js",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
                 "run-script",
